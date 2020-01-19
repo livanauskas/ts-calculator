@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Calculator } from './components/Calculator';
+import { Requirements } from './components/Requirements';
+import './App.scss';
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
+  
+  const [calcName, setCalcName] = useState('Name of your calculator');
+
+  const [calcState, setCalcState] = useState({
+    counter: 0,
+    input: ''
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='cont'>
+        <Calculator calcName={calcName} calcState={calcState} setCalcState={setCalcState} />
+        <Requirements calcName={calcName} setCalcName={setCalcName} calcState={calcState} setCalcState={setCalcState} />
     </div>
   );
-}
-
-export default App;
+};
